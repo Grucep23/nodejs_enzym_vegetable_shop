@@ -12,53 +12,52 @@ let getAllItems = async (req, res) => {
     })
 }
 
-// let createNewUser = async (req, res) => {
-//     let { firstName, lastName, email, address } = req.body;
+let createNewItem = async (req, res) => {
+    let { name, date, price, amount } = req.body;
 
-//     if (!firstName || !lastName || !email || !address) {
-//         return res.status(200).json({
-//             message: 'missing required params'
-//         })
-//     }
+    if (!name || !date || !price || !amount) {
+        return res.status(200).json({
+            message: 'missing required params'
+        })
+    }
 
-//     await pool.execute('insert into users(firstName, lastName, email, address) values (?, ?, ?, ?)',
-//         [firstName, lastName, email, address]);
+    await pool.execute('insert into items(name, date, price, amount) values (?, ?, ?, ?)',
+        [name, date, price, amount]);
 
-//     return res.status(200).json({
-//         message: 'ok'
-//     })
-// }
+    return res.status(200).json({
+        message: 'ok'
+    })
+}
 
-// let updateUser = async (req, res) => {
-//     let { firstName, lastName, email, address, id } = req.body;
-//     if (!firstName || !lastName || !email || !address || !id) {
-//         return res.status(200).json({
-//             message: 'missing required params'
-//         })
-//     }
+let updateItem = async (req, res) => {
+    let { name, date, price, amount, id } = req.body;
+    if (!name || !date || !price || !amount || !id) {
+        return res.status(200).json({
+            message: 'missing required params'
+        })
+    }
 
-//     await pool.execute('update users set firstName= ?, lastName = ? , email = ? , address= ? where id = ?',
-//         [firstName, lastName, email, address, id]);
+    await pool.execute('update users set name= ?, date = ? , price = ? , amount= ? where id = ?',
+        [name, date, price, amount, id]);
 
-//     return res.status(200).json({
-//         message: 'ok'
-//     })
-// }
+    return res.status(200).json({
+        message: 'ok'
+    })
+}
 
-// let deleteUser = async (req, res) => {
-//     let userId = req.params.id;
-//     if (!userId) {
-//         return res.status(200).json({
-//             message: 'missing required params'
-//         })
-//     }
-//     await pool.execute('delete from users where id = ?', [userId])
-//     return res.status(200).json({
-//         message: 'ok'
-//     })
-// }
+let deleteItem = async (req, res) => {
+    let itemId = req.params.id;
+    if (!itemId) {
+        return res.status(200).json({
+            message: 'missing required params'
+        })
+    }
+    await pool.execute('delete from items where id = ?', [itemId])
+    return res.status(200).json({
+        message: 'ok'
+    })
+}
 
 module.exports = {
-    getAllItems, 
-    // createNewUser, updateUser, deleteUser
+    getAllItems, createNewItem, updateItem, deleteItem
 }

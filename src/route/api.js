@@ -4,10 +4,10 @@ import APIController from '../controller/APIController';
 let router = express.Router();
 
 const initAPIRoute = (app) => {
-    router.get('/items', APIController.getAllItems); // method GET -> READ data
-    // router.post('/create-user', APIController.createNewUser); // method POST -> CREATE data
-    // router.put('/update-user', APIController.updateUser); //method PUT -> UPDATE data
-    // router.delete('/delete-user/:id', APIController.deleteUser); //method DELETE -> DELETE data
+    router.get('/items', APIController.getAllItems); 
+    router.post('/create-item', APIController.createNewItem); 
+    router.put('/update-item', APIController.updateItem); 
+    router.delete('/delete-item/:id', APIController.deleteItem); 
 
     return app.use('/api/v1/', router)
 }

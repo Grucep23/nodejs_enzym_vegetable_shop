@@ -5,15 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>enzym_shop</title>
-    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
     <div class="topnav">
         <a class="active" href="/">Home</a>
         <a href="/upload">Upload file</a>
-
     </div>
 
     <div>
@@ -51,9 +50,8 @@
                                 <%= dataItem[i].amount %>
                             </td>
                             <td style="display: flex; gap: 15px;">
-                                <form>
-                                    <a class="btn-detail" href="/detail/item/<%= dataItem[i].id %>"
-                                        target="_blank">Detail</a>
+                                <form action="/detail/item/<%= dataItem[i].id %>">
+                                        <button type="submit">Detail</button>
                                 </form>
 
                                 <form action="/edit-item/<%= dataItem[i].id %>" method="GET">
